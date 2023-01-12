@@ -7,12 +7,13 @@ def find_contact_info():
     content = file.read()
     file.close()
 
-    phone_seq = "([+]?[0-9]{1,3}[-| |.|])?([(][0-9]{3}[)]|[0-9]{3}[-| |.|])?([0-9]{3}[-| |.|][0-9]{4})(x[0-9]{1,5})*"
+    phone_seq = r"([+]?[0-9]{1,3}[-| |.|])?[(]?([0-9]{3})[)]?[-| |.]?([0-9]{3})[-| |.]?([0-9]{4})(x[0-9]{1,5})?"
     phone_match = re.findall(phone_seq, content)
 
     with open('collected/phone_numbers.txt', 'w') as f:
         for match in phone_match:
-            f.write("".join(match) + "\n")
+            phone_num = str(match[1]) + "-" + str(match[2]) + "-" + str(match[3])
+            f.write(phone_num + "\n")
 
 
 if __name__ == "__main__":
