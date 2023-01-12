@@ -17,19 +17,17 @@
 
 ### Links and Resources
 
-* shutil
+* shutil library
+* regex library
+* Regex 101
 
 ### Setup
-
-Install required packages:
-
-* TBD
 
 To run:
 
 * From the `automation` directory run `python automation.py`.
 
-
 ### Tests
 
-* TBD
+* I used Regex 101 to test the regex strings.
+* The given .txt files had exactly 100 valid, non-repeating phone numbers and email addresses. The test would be that the resulting files have exactly 100 valid, non-repeating phone numbers and email addresses. 

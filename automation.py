@@ -1,11 +1,16 @@
 import re
-import shutil
+import shutil   # I didn't use shutil...
 
 
 def find_contact_info():
+    # pulls information from the Potential Contacts file
     file = open('assets/potential_contacts.txt', 'r')
     content = file.read()
     file.close()
+
+    # clears out anything in the emails.txt and phone_numbers.txt files
+    open("collected/emails.txt", 'w').close()
+    open("collected/phone_numbers.txt", 'w').close()
 
     phone_seq = r"([+]?[0-9]{1,3}[-| |.|])?[(]?([0-9]{3})[)]?[-| |.]?([0-9]{3})[-| |.]?([0-9]{4})(x[0-9]{1,5})?"
     email_seq = r"\w*@\w*[-]?\w*.\w*"
