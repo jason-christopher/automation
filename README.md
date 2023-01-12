@@ -17,7 +17,6 @@
 
 ### Links and Resources
 
-* shutil library
 * regex library
 * Regex 101
 

@@ -1,12 +1,16 @@
 import re
-import shutil   # I didn't use shutil...
 
 
 def find_contact_info():
     # pulls information from the Potential Contacts file
-    file = open('assets/potential_contacts.txt', 'r')
-    content = file.read()
-    file.close()
+    file1 = open('assets/potential_contacts.txt', 'r')
+    content = file1.read()
+    file1.close()
+
+    # stretch goal - pulls information from the Existing Contacts file
+    file2 = open('assets/existing-contacts.txt', 'r')
+    existing = file2.read()
+    file2.close()
 
     # clears out anything in the emails.txt and phone_numbers.txt files
     open("collected/emails.txt", 'w').close()
@@ -21,14 +25,14 @@ def find_contact_info():
         cache = []
         for match in phone_match:
             phone_num = str(match[1]) + "-" + str(match[2]) + "-" + str(match[3]) + str(match[4])
-            if phone_num not in cache:
+            if phone_num not in cache and phone_num not in existing:
                 cache.append(phone_num)
                 f.write(phone_num + "\n")
 
     with open('collected/emails.txt', 'w') as f:
         cache = []
         for match in email_match:
-            if match not in cache:
+            if match not in cache and match not in existing:
                 cache.append(match)
                 f.write(match + "\n")
 
