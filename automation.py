@@ -8,7 +8,7 @@ def find_contact_info():
     file.close()
 
     phone_seq = r"([+]?[0-9]{1,3}[-| |.|])?[(]?([0-9]{3})[)]?[-| |.]?([0-9]{3})[-| |.]?([0-9]{4})(x[0-9]{1,5})?"
-    email_seq = r"(\w*@\w*[-]?\w*(\.net|\.com|\.org|\.info|\.biz))"
+    email_seq = r"\w*@\w*[-]?\w*.\w*"
     phone_match = re.findall(phone_seq, content)
     email_match = re.findall(email_seq, content)
 
@@ -19,8 +19,7 @@ def find_contact_info():
 
     with open('collected/emails.txt', 'w') as f:
         for match in email_match:
-            email = str(match[0])
-            f.write(email + "\n")
+            f.write(match + "\n")
 
 
 if __name__ == "__main__":
