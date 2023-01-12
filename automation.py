@@ -13,13 +13,19 @@ def find_contact_info():
     email_match = re.findall(email_seq, content)
 
     with open('collected/phone_numbers.txt', 'w') as f:
+        cache = []
         for match in phone_match:
             phone_num = str(match[1]) + "-" + str(match[2]) + "-" + str(match[3]) + str(match[4])
-            f.write(phone_num + "\n")
+            if phone_num not in cache:
+                cache.append(phone_num)
+                f.write(phone_num + "\n")
 
     with open('collected/emails.txt', 'w') as f:
+        cache = []
         for match in email_match:
-            f.write(match + "\n")
+            if match not in cache:
+                cache.append(match)
+                f.write(match + "\n")
 
 
 if __name__ == "__main__":
