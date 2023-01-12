@@ -12,7 +12,7 @@ def find_contact_info():
 
     with open('collected/phone_numbers.txt', 'w') as f:
         for match in phone_match:
-            phone_num = str(match[1]) + "-" + str(match[2]) + "-" + str(match[3])
+            phone_num = str(match[1]) + "-" + str(match[2]) + "-" + str(match[3]) + str(match[4])
             f.write(phone_num + "\n")
 
 
