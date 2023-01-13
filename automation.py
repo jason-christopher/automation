@@ -18,22 +18,18 @@ def find_contact_info():
 
     phone_seq = r"([+]?[0-9]{1,3}[-| |.|])?[(]?([0-9]{3})[)]?[-| |.]?([0-9]{3})[-| |.]?([0-9]{4})(x[0-9]{1,5})?"
     email_seq = r"\w*@\w*[-]?\w*.\w*"
-    phone_match = re.findall(phone_seq, content)
-    email_match = re.findall(email_seq, content)
+    phone_match = set(re.findall(phone_seq, content))
+    email_match = set(re.findall(email_seq, content))
 
     with open('collected/phone_numbers.txt', 'w') as f:
-        cache = []
         for match in phone_match:
             phone_num = str(match[1]) + "-" + str(match[2]) + "-" + str(match[3]) + str(match[4])
-            if phone_num not in cache and phone_num not in existing:
-                cache.append(phone_num)
+            if phone_num not in existing:
                 f.write(phone_num + "\n")
 
     with open('collected/emails.txt', 'w') as f:
-        cache = []
         for match in email_match:
-            if match not in cache and match not in existing:
-                cache.append(match)
+            if match not in existing:
                 f.write(match + "\n")
 
 
