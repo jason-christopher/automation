@@ -18,8 +18,8 @@ def find_contact_info():
 
     phone_seq = r"([+]?\d{1,3}[-| |.|])?[(]?(\d{3})[)]?[-| |.]?(\d{3})[-| |.]?(\d{4})(x\d{1,5})?"
     email_seq = r"\w*@\w*[-]?\w*.\w*"
-    phone_match = set(re.findall(phone_seq, content))
-    email_match = set(re.findall(email_seq, content))
+    phone_match = sorted(set(re.findall(phone_seq, content)))
+    email_match = sorted(set(re.findall(email_seq, content)))
 
     with open('collected/phone_numbers.txt', 'w') as f:
         for match in phone_match:
