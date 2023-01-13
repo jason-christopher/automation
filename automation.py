@@ -16,7 +16,7 @@ def find_contact_info():
     open("collected/emails.txt", 'w').close()
     open("collected/phone_numbers.txt", 'w').close()
 
-    phone_seq = r"([+]?[0-9]{1,3}[-| |.|])?[(]?([0-9]{3})[)]?[-| |.]?([0-9]{3})[-| |.]?([0-9]{4})(x[0-9]{1,5})?"
+    phone_seq = r"([+]?\d{1,3}[-| |.|])?[(]?(\d{3})[)]?[-| |.]?(\d{3})[-| |.]?(\d{4})(x\d{1,5})?"
     email_seq = r"\w*@\w*[-]?\w*.\w*"
     phone_match = set(re.findall(phone_seq, content))
     email_match = set(re.findall(email_seq, content))
